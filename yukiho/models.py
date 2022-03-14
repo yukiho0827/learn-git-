@@ -19,3 +19,8 @@ class UserInfo(models.Model):
     )
     gender = models.SmallIntegerField(verbose_name="性别", choices=gender_choices)
     depart = models.ForeignKey(verbose_name="部门", to="Department", to_field="id", on_delete=models.CASCADE)
+
+
+class Admin(models.Model):
+    user = models.CharField(verbose_name='用户名', max_length=32)
+    password = models.CharField(verbose_name='密码', max_length=64)

@@ -1,17 +1,17 @@
 {% extends 'action_layout.html' %}
+
+{% block button_name %}
+    添加管理员
+{% endblock %}
 {% block title %}
-    新建部门
+    添加管理员
 {% endblock %}
 {% block url_add_name %}
-    /department/add
+    新建管理员
 {% endblock %}
-{% block button_name %}
-    新建部门
-{% endblock %}
-
 {% block content %}
     <div class="panel panel-default">
-        <div class="panel-heading">新建部门</div>
+        <div class="panel-heading">新建管理员</div>
         <div class="panel-body">
             <!--表单-->
             <form class="form-horizontal" method="post" novalidate>
