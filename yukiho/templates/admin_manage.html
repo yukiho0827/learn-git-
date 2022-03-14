@@ -1,0 +1,38 @@
+{% extends 'manage_layout.html' %}
+
+{% block title %}管理员管理
+{% endblock %}
+{% block url_add_name %}/admin/manage
+{% endblock %}
+{% block button_name %}新建管理员
+{% endblock %}
+{% block search_placeholder_name %}管理员查询
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+{% block list %}管理员列表
+{% endblock %}
+{% block table_class %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for obj in user_list %}
+            <tr>
+                <td>{{ obj.id }}</td>
+                <td>{{ obj.user }}</td>
+                <td>******</td>
+                <td><a href="/admin/{{ obj.id }}/edit" class="btn btn-primary btn-xs">编辑</a></td>
+                <td><a href="/admin/{{ obj.id }}/delete" class="btn btn-danger btn-xs">删除</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

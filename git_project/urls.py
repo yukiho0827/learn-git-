@@ -22,5 +22,6 @@ urlpatterns = [
     path('department/add', department.department_add),
     path('department/manage', department.department_manage),
     path('admin/add', admin.admin_add),
+    path('admin/manage', admin.admin_manage),
 
 ]

@@ -11,6 +11,8 @@
 {#{% endblock %}#}
 {#{% block list %}#}
 {#{% endblock %}#}
+{#{% block table_class %}#}
+{#{% endblock %}#}
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -63,11 +65,13 @@
 <div class="container">
     <div style="margin-bottom: 10px">
 
-        <a href="{% block url_add_name %}{% endblock %}" class="btn btn-primary">{% block button_name %}{% endblock %}</a>
+        <a href="{% block url_add_name %}{% endblock %}" class="btn btn-primary">
+            {% block button_name %}{% endblock %}</a>
         <div style="float: right;width: 280px">
             <form method="get">
                 <div class="input-group">
-                    <input type="text" class="form-control" name='data' placeholder="{% block search_placeholder_name %}{% endblock %}" value="{{ search_data }}">
+                    <input type="text" class="form-control" name='data'
+                           placeholder="{% block search_placeholder_name %}{% endblock %}" value="{{ search_data }}">
                     <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">搜索</button>
                 </span>
@@ -79,27 +83,29 @@
         <div class="panel-heading">
             {% block list %}{% endblock %}
         </div>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>部门名称</th>
-
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for obj in user_list %}
-                <tr>
-                    <td>{{ obj.id }}</td>
-
-                    <td>{{ obj.depart }}</td>
-                    <td><a href="/department/{{ obj.id }}/edit" class="btn btn-primary btn-xs">编辑</a></td>
-                    <td><a href="/department/{{ obj.id }}/delete" class="btn btn-danger btn-xs">删除</a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% block table_class %}
+            {#        <table class="table table-bordered">#}
+            {#            <thead>#}
+            {#            <tr>#}
+            {#                <th>ID</th>#}
+            {#                <th>部门名称</th>#}
+            {##}
+            {#                <th>操作</th>#}
+            {#            </tr>#}
+            {#            </thead>#}
+            {#            <tbody>#}
+            {#            {% for obj in user_list %}#}
+            {#                <tr>#}
+            {#                    <td>{{ obj.id }}</td>#}
+            {##}
+            {#                    <td>{{ obj.depart }}</td>#}
+            {#                    <td><a href="/department/{{ obj.id }}/edit" class="btn btn-primary btn-xs">编辑</a></td>#}
+            {#                    <td><a href="/department/{{ obj.id }}/delete" class="btn btn-danger btn-xs">删除</a></td>#}
+            {#                </tr>#}
+            {#            {% endfor %}#}
+            {#            </tbody>#}
+            {#        </table>#}
+        {% endblock %}
     </div>
     <div class="container" style="text-align: center;">
         <ul class="pagination" style="margin: 0 auto">
