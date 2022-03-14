@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from yukiho.views import department, user, account,admin
+from yukiho.views import department, user, account, admin
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -23,5 +23,6 @@ urlpatterns = [
     path('department/manage', department.department_manage),
     path('admin/add', admin.admin_add),
     path('admin/manage', admin.admin_manage),
-
+    path('admin/<int:uid>/delete', admin.admin_delete),
+    path('admin/<int:uid>/edit', admin.admin_edit),
 ]

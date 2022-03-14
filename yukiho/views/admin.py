@@ -39,3 +39,22 @@ def admin_manage(request):
         'page_list_string': page_obj.show_page(),
     }
     return render(request, 'admin_manage.html', content)
+
+
+def admin_delete(request, uid):
+    row_object = models.Admin.objects.filter(id=uid).first()
+    if not row_object:
+        return render(request, 'error.html', {'msg': '未知数据'})
+    row_object.delete()
+    return redirect('/admin/manage')
+
+
+def admin_edit(request, uid):
+    row_object = models.Admin.objects.filter(id=uid).first()
+    if not row_object:
+        return render(request, 'error.html', {'msg': '未知数据'})
+    if request.method == "GET":
+        form = AdminModelForm(instance=row_object)
+        return render(request, 'admin_edit.html', {'form': form})
+    form = AdminModelForm(data=request.POST, instance=row_object)
+    return render(request, 'admin_edit.html', {'form': form})
