@@ -9,9 +9,13 @@ class AuthMiddleware(MiddlewareMixin):
 
     def process_request(self, request):
         # 后续还加
-        if request.path_into in ['/login']:
+        print(1)
+        if request.path_info in ['/login', '/image/code']:
+            print(2)
             return
+        print(3)
         info_dict = request.session.get('info')
+        print(4)
         if not info_dict:
             return redirect('/login')
         return

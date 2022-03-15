@@ -31,5 +31,8 @@ urlpatterns = [
     path('user/<int:uid>/delete', user.user_delete),
     path('user/<int:uid>/edit', user.user_edit),
     path('user/manage', user.user_manage),
+    path('login', account.login),
+    path('logout', account.logout),
+    path('image/code', account.image_code),
 
 ]
