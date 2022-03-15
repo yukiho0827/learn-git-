@@ -57,4 +57,9 @@ def admin_edit(request, uid):
         form = AdminModelForm(instance=row_object)
         return render(request, 'admin_edit.html', {'form': form})
     form = AdminModelForm(data=request.POST, instance=row_object)
+    if form.is_valid():
+        form.save()
+        return redirect('/admin/manage')
     return render(request, 'admin_edit.html', {'form': form})
+
+

@@ -29,7 +29,7 @@ class AdminModelForm(BootStrapModelForm):
         model = models.Admin
         fields = ['user', 'password', 'confirm_password']
         widgets = {
-            'password': forms.PasswordInput(render_value=True),
+            'password': forms.PasswordInput(),
         }
 
     def clean_user(self):
