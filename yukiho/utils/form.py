@@ -78,3 +78,8 @@ class LoginForm(BootStrapForm, forms.Form):
         widget=forms.TextInput,
         required=True,
     )
+
+    def clean_password(self):
+        pwd = self.cleaned_data.get('password')
+        md5_pwd = encrypt.md5(pwd)
+        return md5_pwd

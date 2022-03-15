@@ -18,10 +18,10 @@ def login(request):
         # 获取code必须放前面，Admin字段中没有code，不先删除code会报错
         input_code = form.cleaned_data.pop('code')
 
-        admin_object1 = models.Admin.objects.filter(name=form.cleaned_data['name']).first()
+        admin_object1 = models.Admin.objects.filter(user=form.cleaned_data['user']).first()
         # print('对象1正常')
         if not admin_object1:
-            form.add_error('name', '用户名不存在。')
+            form.add_error('user', '用户名不存在。')
             # print('用户名不存在')
             return render(request, 'login.html', {'form': form})
         admin_object2 = models.Admin.objects.filter(**form.cleaned_data).first()
@@ -41,7 +41,7 @@ def login(request):
         # 用户登录核心：
         request.session['info'] = {
             'id': admin_object2.id,
-            'name': admin_object2.name,
+            'user': admin_object2.user,
         }
 
         # 3天免登录，之前设置了一分钟 必须改 不然会一分钟登录一次
