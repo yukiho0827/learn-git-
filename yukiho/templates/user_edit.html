@@ -1,0 +1,60 @@
+{% extends 'action_layout.html' %}
+{% load static %}
+{% block title %}
+    编辑用户
+{% endblock %}
+{% block url_add_name %}
+    /user/add
+{% endblock %}
+
+{% block button_name %}
+    新建用户
+{% endblock %}
+{% block content %}
+        <div class="panel panel-default">
+        <div class="panel-heading">编辑用户</div>
+        <div class="panel-body">
+            <!--表单-->
+            <form class="form-horizontal" method="post" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{ field.label }}</label>
+                        <div class="col-sm-10">
+                            {{ field }}
+                            <span style="color: red">{{ field.errors.0 }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">保 存</button>
+                    </div>
+                </div>
+            </form>
+            <!--表单-->
+        </div>
+    </div>
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet"
+          href="{% static 'plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css' %}">
+{% endblock %}
+{% block js %}
+    <script src="{% static 'plugins/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js' %}"></script>
+    <script>
+        $(
+            function () {
+                $('#id_create_time').datetimepicker({
+                    minView: 'month',
+                    format: 'yyyy-mm-dd',
+                    startDate: '0',
+                    language: 'zh-CN',
+                    autoclose: true
+                })
+            }
+        )
+    </script>
+{% endblock %}

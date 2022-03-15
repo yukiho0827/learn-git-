@@ -5,6 +5,15 @@ from .bootstrap_modelform import BootStrapModelForm, BootStrapForm
 from yukiho.utils import encrypt
 
 
+class UserModelForm(BootStrapModelForm):
+    class Meta:
+        model = models.UserInfo
+        fields = ['user', 'password', 'age', 'gender', 'depart', 'create_time']
+        widgets = {
+            'password': forms.PasswordInput(render_value=True),
+        }
+
+
 class DepartModelForm(BootStrapModelForm):
     class Meta:
         model = models.Department

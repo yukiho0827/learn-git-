@@ -27,5 +27,9 @@ urlpatterns = [
     path('admin/manage', admin.admin_manage),
     path('admin/<int:uid>/delete', admin.admin_delete),
     path('admin/<int:uid>/edit', admin.admin_edit),
+    path('user/add', user.user_add),
+    path('user/<int:uid>/delete', user.user_delete),
+    path('user/<int:uid>/edit', user.user_edit),
+    path('user/manage', user.user_manage),
 
 ]
